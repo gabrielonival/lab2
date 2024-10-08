@@ -10,9 +10,9 @@ phases:
   build:
     commands:
       - echo Building the Docker image...
-      - docker build -t Lab2-php-container:${CODE_VERSION} .
-      - docker tag Lab2-php-container:${CODE_VERSION} $ECR_REGISTRY/$ECR_REPOSITORY:${CODE_VERSION}
-      - docker tag Lab2-php-container:${CODE_VERSION} $ECR_REGISTRY/$ECR_REPOSITORY:latest
+      - docker build -t $ECR_REGISTRY:${CODE_VERSION} .
+      - docker tag $ECR_REGISTRY:${CODE_VERSION} $ECR_REGISTRY/$ECR_REPOSITORY:${CODE_VERSION}
+      - docker tag $ECR_REGISTRY:${CODE_VERSION} $ECR_REGISTRY/$ECR_REPOSITORY:latest
   post_build:
     commands:
       - echo Pushing the Docker image to ECR...

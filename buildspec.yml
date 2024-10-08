@@ -11,13 +11,11 @@ phases:
     commands:
       - echo Building the Docker image...
       - docker build -t $ECR_REGISTRY:${CODE_VERSION} .
-      - docker tag $ECR_REGISTRY:${CODE_VERSION} $ECR_REGISTRY/$ECR_REPOSITORY:${CODE_VERSION}
-      - docker tag $ECR_REGISTRY:${CODE_VERSION} $ECR_REGISTRY/$ECR_REPOSITORY:latest
+      - docker tag $ECR_REGISTRY:${CODE_VERSION} $ECR_REGISTRY/$ECR_REPOSITORY:${CODE_VERSION}     
   post_build:
     commands:
       - echo Pushing the Docker image to ECR...
       - docker push $ECR_REGISTRY/$ECR_REPOSITORY:${CODE_VERSION}
-      - docker push $ECR_REGISTRY/$ECR_REPOSITORY:latest
       - echo Writing image definition file for ECS deployment...
       - printf '[{"name":"Lab2-php-container","imageUri":"%s"}]' $ECR_REGISTRY/$ECR_REPOSITORY:${CODE_VERSION} > imagedefinitions.json
 artifacts:

@@ -54,7 +54,7 @@ $instance_id = file_get_contents('http://169.254.169.254/latest/meta-data/instan
 </head>
 <body>
     <div class="container">
-        <h1>¡Hola TeraMundo V1.0!</h1>
+        <h1>¡Hola TeraMundo V1.2!</h1>
         <p>Bienvenido al servidor web.</p>
         <div class="info">
             <p>Este es el servidor con ID: <span class="highlight"><?php echo $instance_id; ?></span></p>
